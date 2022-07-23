@@ -17,42 +17,31 @@ window.speechSynthesis.onvoiceschanged = () => {
   voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
 };
 
-document.querySelector("#rate").addEventListener("input", () => {
+selectElement("#rate").addEventListener("input", () => {
   const rate = selectElement("#rate")
   speech.rate = rate.value;
  selectElement("#rate-label").innerHTML = rate.value;
 });
 
-document.querySelector("#volume").addEventListener("input", () => {
+selectElement("#volume").addEventListener("input", () => {
   const volume = selectElement("#volume").value
   speech.volume = volume;
   selectElement("#volume-label").innerHTML = volume;
 });
 
-document.querySelector("#pitch").addEventListener("input", () => {
-  const pitch = selectElement("#pitch");
-    speech.pitch = pitch.value;
-  selectElement("#pitch-label").innerHTML = pitch.value;
+selectElement("#pitch").addEventListener("input", () => {
+  const pitch = selectElement("#pitch").value
+    speech.pitch = pitch
+  selectElement("#pitch-label").innerHTML = pitch
 });
 
-document.querySelector("#voices").addEventListener("change", () => {
-  speech.voice = voices[document.querySelector("#voices").value];
-});
+selectElement("#voices").addEventListener("change", () =>speech.voice = voices[selectElement("#voices").value]);
 
-document.querySelector("#start").addEventListener("click", () => {
-  let text = selectElement("textarea").value
-   speech.text =text;
+selectElement("#start").addEventListener("click", () => {
+  speech.text = selectElement("textarea").value
   window.speechSynthesis.speak(speech);
 });
 
-document.querySelector("#pause").addEventListener("click", () => {
-  window.speechSynthesis.pause();
-});
-
-document.querySelector("#resume").addEventListener("click", () => {
-  window.speechSynthesis.resume();
-});
-
-document.querySelector("#cancel").addEventListener("click", () => {
-  window.speechSynthesis.cancel();
-});
+selectElement("#pause").addEventListener("click", () => window.speechSynthesis.pause());
+selectElement("#resume").addEventListener("click", () =>  window.speechSynthesis.resume());
+selectElement("#cancel").addEventListener("click", () => window.speechSynthesis.cancel());
